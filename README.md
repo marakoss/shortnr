@@ -17,3 +17,15 @@ Dead Simple URL Shortener
 # Security
 - Remember to properly set open_basedir restriction.
 - Passed POST URL is not sanitized, but its checked with PHP's FILTER_VALIDATE_URL.
+
+
+# Restricting access with .htaccess
+- You can use Apache's .htaccess to allow only specific IP adresses from creating new "shorts". Create `.htaccess` in web root of your project containing something like this. Remember to change *IPADDRESS* to your allowed IP Address.
+```
+<FilesMatch "\.(php)$">
+AddDefaultCharset UTF-8
+Order Deny,Allow
+Deny from all
+Allow from *IPADDRESS*
+</FilesMatch>
+```
